@@ -146,11 +146,11 @@ body {
   }
 }
 
-@media only screen and (max-width: 350px) {
+@media only screen and (max-width: 380px) {
   .first-col {
-    width: 130px;
-    min-width: 130px;
-    max-width: 130px;
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
     left: 0px;
     white-space: pre-line;
   }
