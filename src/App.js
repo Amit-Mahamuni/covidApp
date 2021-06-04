@@ -1,23 +1,17 @@
-import logo from './logo.svg';
 import './App.css';
-
+import { Container, Navbar } from "react-bootstrap";
+import SearchFrm from './Components/SearchFrm';
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="mb-5">
+      <Navbar bg="light" className="bg-white shadow mb-3">
+        <Container>
+          <Navbar.Brand href="#">COVID</Navbar.Brand>
+        </Container>
+      </Navbar>
+      <Container >
+        <SearchFrm />
+      </Container>  
     </div>
   );
 }

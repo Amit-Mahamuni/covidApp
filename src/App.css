@@ -1,15 +1,156 @@
-.App {
-  text-align: center;
+body {
+	font-family: 'Nunito', sans-serif;
+  background-color: aliceblue;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.centerTitle{
+  font-size: 16px;
+  font-weight: 600;
 }
+
+.centerSubTitle{
+  font-size: 12px;
+  font-weight: 400;
+}
+
+.filterSec .list-group-item-action{
+  width: min-content !important;
+}
+
+.wrapper {
+  position: relative;
+  overflow: auto;
+  /* border: 1px solid black; */
+  white-space: nowrap;
+}
+
+.sticky-col {
+  position: -webkit-sticky;
+  position: sticky;
+  background-color: white;
+}
+
+.first-col {
+  width: 300px;
+  min-width: 300px;
+  max-width: 300px;
+  left: 0px;
+  white-space: pre-line;
+}
+
+.second-col {
+  width: 150px;
+  min-width: 150px;
+  max-width: 150px;
+  left: 100px;
+}
+.feetext{
+  font-weight: bold;
+  font-size: .75em;
+}
+
+.filterOptSec{
+  display: inline-flex;
+  width: 100%;
+  overflow-y: hidden;
+  overflow-x: scroll;
+  align-content: center;
+  align-items: center;
+}
+.filterOptSec small{
+  text-transform: capitalize;
+}
+
+.filterTag{
+  border: 1px solid #000;
+  padding: 2px 10px;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  margin: 5px 0px;
+  border-radius: 15px;
+  font-weight: 700;
+  min-width: max-content;
+}
+.filterTitleTxt{
+  min-width: max-content;
+}
+.searchBtn{
+  border: 1px solid #1E2C5F;
+  font-weight: 700;
+  text-transform: capitalize;
+}
+.searchBtn:hover{
+  background-color: #1E2C5F;
+}
+.btn-group .btn{
+  font-weight: 500;
+  font-size: 16px !important;
+  color: #000 !important;
+}
+.detailBtn{
+  font-weight: 600;
+  font-size: 14px !important;
+  color: #000 !important;
+  padding: 2px 10px !important;
+}
+.btn-group .active,.detailBtn:hover,.btn-group .btn:hover{
+  background: #E1E1FB !important;
+  color: #000 !important;
+}
+.modelList .list-group-item{
+  padding: .2rem 1.25rem !important;
+  text-align: end;
+}
+.modeltimeSlotList .list-group-item{
+  padding: .2rem 1.25rem !important;
+}
+/* width */
+::-webkit-scrollbar {
+	width: 0.1em;
+    height: 0.1em;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+	background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+	background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+	background: #555;
+}
+
 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
+  }
+
+}
+
+@media only screen and (max-width: 750px) {
+  .first-col {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+    left: 0px;
+    white-space: pre-line;
+  }
+}
+
+@media only screen and (max-width: 350px) {
+  .first-col {
+    width: 140px;
+    min-width: 140px;
+    max-width: 140px;
+    left: 0px;
+    white-space: pre-line;
   }
 }
 
