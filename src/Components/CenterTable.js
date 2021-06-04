@@ -312,7 +312,7 @@ function CenterTable(props) {
                 <Row><Col className="d-flex my-1 align-items-center" sm={8}>
                     {
                         Object.keys(filterOptSet).find((sess) => filterlist[sess] != "All") ?
-                            <div className="filterOptSec"><h5 className="filterTitleTxt">{filterCenterList.centers.length +" Result For :"}</h5>
+                            <div className="filterOptSec"><h5 className="filterTitleTxt">Result For :</h5>
                                 {
                                     Object.keys(filterOptSet).map((opt) => {
                                         if (filterlist[opt] != "All") {

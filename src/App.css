@@ -148,9 +148,9 @@ body {
 
 @media only screen and (max-width: 350px) {
   .first-col {
-    width: 140px;
-    min-width: 140px;
-    max-width: 140px;
+    width: 130px;
+    min-width: 130px;
+    max-width: 130px;
     left: 0px;
     white-space: pre-line;
   }
