@@ -2,14 +2,12 @@ import React, { useState, useEffect } from "react";
 import { Table, Badge, Row, Col, Modal, ListGroup, ButtonGroup, Button, Form } from "react-bootstrap";
 
 function CenterTable(props) {
-    // let filter = { "fee": "All", "availbility": "All", "age": "All", "vaccine": "All", "block_name": "All" }
-    // const [filterlist, setfilterlist] = useState({ All: true, Paid: false, Free: false });
+
     const [filterlist, setfilterlist] = useState({ "fee": "All", "availbility": "All", "age": "All", "vaccine": "All", "block_name": "All" });
     const [filterCenterList, setfilterCenterList] = useState();
     const [blockSelect, setblockSelect] = useState();
     const [show, setShow] = useState(false);
     const [centDetail, setcentDetail] = useState({ "center": "", "session": "" });
-    // const [modelDetail, setmodelDetail] = useState({ "center": "", "session": "" });
 
     useEffect(() => {
         setFilter();
@@ -18,12 +16,6 @@ function CenterTable(props) {
 
     useEffect(() => {
         console.log(centDetail);
-        // if (centDetail.center != "" && centDetail.session != "") {
-        //     let cent_temp = props.centerList.centers.find((cent) => centDetail.center === cent.center_id);
-        //     let sess_temp = cent_temp.sessions.find((sess) => centDetail.session === sess.session_id);            
-        //     setmodelDetail({"center": cent_temp, "session": sess_temp });
-        //     console.log(modelDetail);
-        // }
     }, [centDetail]);
 
 
@@ -65,7 +57,7 @@ function CenterTable(props) {
         // }
         console.log("render");
         let temp = props.centerList.centers;
-
+        props.setrchstate(false)
         if (filterlist.fee != "All") {
             temp = temp.filter((center) =>
                 center.fee_type.toLowerCase().includes((filterlist.fee).toLowerCase())
@@ -230,7 +222,7 @@ function CenterTable(props) {
                                         <span className="centerTitle">{centDetail.center.name} </span><br />
                                         <span className="centerSubTitle">{centDetail.center.block_name + ", " + centDetail.center.district_name + ", " + centDetail.center.state_name + "," + centDetail.center.pincode}</span>
                                     </span>
-                                    <Button variant="outline-secondary" className="searchBtn">Get Direction</Button>
+                                    <a href={"https://www.google.co.in/maps/search/"+centDetail.center.name} target="blank" className="btn btn-outline-secondary searchBtn">Get Direction</a>
                                 </Col>
                                 <Col>
                                     <ListGroup variant="flush" className="modelList">
@@ -284,6 +276,15 @@ function CenterTable(props) {
         )
     }
 
+    function scrollDiv(dir) {
+        if(dir == "L"){
+            document.getElementById("wrapper").scrollLeft -= 100;
+        }else{
+            document.getElementById("wrapper").scrollLeft += 100;
+        }
+        
+    }
+
     const slotDetail = (cent_id, sess_id) => {
         console.log(cent_id + "=" + sess_id);
         let cent_temp = props.centerList.centers.find((cent) => cent_id === cent.center_id);
@@ -311,7 +312,7 @@ function CenterTable(props) {
                 <Row><Col className="d-flex my-1 align-items-center" sm={8}>
                     {
                         Object.keys(filterOptSet).find((sess) => filterlist[sess] != "All") ?
-                            <div className="filterOptSec"><h5 className="filterTitleTxt">Result For :</h5>
+                            <div className="filterOptSec"><h5 className="filterTitleTxt">{filterCenterList.centers.length +" Result For :"}</h5>
                                 {
                                     Object.keys(filterOptSet).map((opt) => {
                                         if (filterlist[opt] != "All") {
@@ -325,17 +326,21 @@ function CenterTable(props) {
                                     }
 
                                     )
-                                }</div> : <h5 className="filterTitleTxt">Result</h5>
+                                }</div> : <h5 className="filterTitleTxt">{props.centerList.centers.length +" - Result"}</h5>
                     }
                 </Col><Col className="d-flex flex-row-reverse my-1 align-items-center" sm={4}>
                         <ButtonGroup className="ml-2" aria-label="First group">
-                            <Button variant="outline-secondary" size="sm">Prev</Button>
-                            <Button variant="outline-secondary" size="sm">Next</Button>
+                            <Button variant="outline-secondary" size="sm"
+                                onClick={() => scrollDiv("L")}
+                            >Prev</Button>
+                            <Button variant="outline-secondary" size="sm"
+                                onClick={() => scrollDiv("R")}
+                            >Next</Button>
                         </ButtonGroup>
                     </Col>
                 </Row>
             </div>
-            <div className="wrapper">
+            <div className="wrapper" id="wrapper">
                 <Table striped bordered hover>
                     <thead>
                         <tr>
@@ -353,7 +358,7 @@ function CenterTable(props) {
                     </thead>
                     <tbody>
                         {
-                            filterCenterList ?
+                            filterCenterList && !props.srchstate ?
                                 filterCenterList.centers.map((cent) =>
                                     <tr>
                                         <td className="sticky-col first-col">

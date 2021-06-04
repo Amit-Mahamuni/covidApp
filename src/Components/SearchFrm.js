@@ -6,6 +6,7 @@ import CenterTable from "./CenterTable";
 function SearchFrm() {
 
     const [state, setstate] = useState({ id: "", name: "" });
+    const [srchstate, setsrchstate] = useState(false);
     const [city, setcity] = useState({ id: "", name: "" });
     const [stateList, setstateList] = useState({});
     const [distList, setdistList] = useState({});
@@ -87,6 +88,7 @@ function SearchFrm() {
         axios.get("https://cdn-api.co-vin.in/api/v2/appointment/sessions/public/calendarByDistrict?district_id=" + dis_id + "&date=" + getCurrDate()).then((response) => {
             setcenterListpss(response.data);
             localStorage.setItem("centerlist", JSON.stringify(response.data));
+            setsrchstate(true)
         });
     }
 
@@ -154,7 +156,7 @@ function SearchFrm() {
                 <hr />
                 {
                     centerListpss ?
-                        <CenterTable centerList={centerListpss} />
+                        <CenterTable centerList={centerListpss} srchstate={srchstate} setrchstate={setsrchstate} />
                         : <p>Select Sate and Dist</p>
                 }
 
