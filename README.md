@@ -1,3 +1,5 @@
+![Screenshot 2021-06-04 at 21-10-35 Covid App](https://user-images.githubusercontent.com/53075462/120827765-67e97580-c579-11eb-952e-0ec8458b3eff.png)
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
